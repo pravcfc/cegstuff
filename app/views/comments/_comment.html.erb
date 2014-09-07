@@ -1,0 +1,8 @@
+
+<% @post.comments.each do |comment| %>
+  <p>
+    <strong><%= comment.commenter + " : " %></strong>
+    <%= comment.body %>
+  </p>
+ 
+<% end %>

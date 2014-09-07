@@ -1,0 +1,17 @@
+<br /><br />
+<%= will_paginate %>
+<center>
+<table>
+	<% @users.each do |u| %>
+	<tr>
+		<td><%= gravatar_for u %></td>
+		<td><%= link_to u.name, user_path(id: u.id) %></td> 
+		<% if u.admin? && !current_user?(u) %>
+			|  <%= link_to "delete", user, method: :delete, 
+			data: {confirm: "You Sure?"} %> 
+		<% end %>	
+	</tr>
+	<% end %>
+</table>
+</center>
+<%= will_paginate %>

@@ -1,0 +1,15 @@
+<br />
+<p>
+<h2><strong><%= @post.title %></strong></h2>
+</p>
+
+<center>
+	<%= @post.text %>
+	<p> Posted <%= time_ago_in_words @post.created_at %> ago. </p>
+</center>
+
+<h3>Comments</h3>
+<%= render "comments/comment" %>
+
+<h4>Add a comment : </h4>
+<%= render "comments/form" %>

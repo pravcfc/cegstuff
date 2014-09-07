@@ -1,0 +1,18 @@
+<h2>A New Blog</h2>
+
+<%= form_for :post, url: posts_path do |f| %>
+
+<%= render 'posterrors' %>
+
+	<p>
+	 <%= f.label :title %><br />
+	 <%= f.text_field :title, size: "50x100" %>
+	</p>
+	<p>
+	 <%= f.label :text %><br />
+	 <%= f.text_field :text, size: "100x300" %>
+	</p>
+	<p>
+		<%= f.submit "Post Blog" %>
+	</p>
+	<% end %>

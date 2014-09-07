@@ -1,0 +1,6 @@
+<tr>
+<td><%= link_to gravatar_for(feed_item.user), feed_item.user %></td>
+<td><%= link_to feed_item.user.name, feed_item.user %></td>
+<td><%= feed_item.text %></td>
+<td>Posted <%= "#{time_ago_in_words(feed_item.created_at)} ago"%></td>
+</tr>

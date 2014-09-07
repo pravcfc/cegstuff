@@ -1,0 +1,24 @@
+<title>CEG Stuff</title>
+    
+<h1>CEG Stuff</h1>
+
+<div id = "nav">
+  <ul>  
+    <li><%= link_to  "Home", posts_path %></li>  
+
+    <% if signed_in? == false %>
+
+            <li><%= link_to "Register", register_path %></li>
+             <li><%= link_to "About", about_path %></li>  
+            <li><%= link_to "SignIn", signin_path %></li>   
+
+    <% else %>
+             <li><%= link_to "Feed", feed_path %></li>  
+             <li><%= link_to "Blog", new_post_path %></li>  
+            <li><%= link_to "Profile", current_user %></li>
+             <li><%= link_to "About", about_path %></li>  
+            <li><%= link_to "Sign Out", signout_path, method: "delete", prompt: 'Are you sure?' %></li>
+    <% end %>
+
+  </ul>  
+</div>

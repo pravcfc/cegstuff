@@ -1,0 +1,10 @@
+<%= form_for [@post, @post.comments.build] do |f| %>
+  <h4><%= notice %></h4>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit "comment" %>
+  </p>
+<% end %>

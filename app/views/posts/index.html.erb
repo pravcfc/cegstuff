@@ -1,0 +1,16 @@
+<center>
+<table>
+
+<% @posts.each do |post| %>
+<tr>
+	<% user = User.find_by(id: post.user_id) %>
+	<td><%= link_to gravatar_for(user), user %></td>
+	<td><h2><%= link_to post.title, post %></h2></td>
+		<td><p><%= post.text %></p></td>
+
+</tr>
+<% end %>
+
+</table>
+<%= will_paginate %>
+</center>
