@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -33,26 +30,37 @@ gem 'will_paginate', '3.0.4'
 
 gem 'bootstrap-will_paginate', '0.0.9'
 
-
-group :test do
-  gem 'selenium-webdriver', '2.35.1'
-  gem 'capybara', '~> 2.2.0'
-end
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'faker', '1.1.2'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'rspec-its'
+  gem 'guard-rspec'
+  gem 'sqlite3'
+  gem 'guard-livereload'
+  gem 'spork-rails', github: 'sporkrb/spork-rails' # rubygems version not rails 4 compatible
+  gem 'simplecov', :require => false
+  gem 'awesome_print'
+  gem 'pry'
+  gem 'guard-spork'
 end
 
 group :test do
-  gem 'factory_girl_rails', '4.2.1'
-  gem 'pry'
-  gem 'awesome_print'
+  gem 'capybara'
+  gem 'database_cleaner', '1.0.1'
+  gem 'email_spec'
+  gem 'shoulda-matchers'
+  gem 'selenium-webdriver'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password

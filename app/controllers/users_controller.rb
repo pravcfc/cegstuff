@@ -1,16 +1,11 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
+  skip_before_action :signed_in_user, only: [:new, :create]
 
   def index
     @users = User.paginate(page: params[:page] )
   end
 
   def news_feed
-    if signed_in?
-      @post = current_user.posts.build
-      @feed_items = current_user.feed.paginate(page: params[:page] )
-    end
   end
 
   def new
@@ -19,7 +14,6 @@ class UsersController < ApplicationController
 
   def show 
   	@user =  User.find(params[:id] )
-
     @posts = @user.posts.paginate(page: params[:page] )
   end
 
@@ -28,18 +22,18 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to CegStuff!"
-      redirect_to @user
+      redirect_to root_url
     else 
        render "new"
     end
   end
 
   def edit 
-    #@user = User.find(params[:id] )
+    user = User.find(params[:id] )
   end
 
   def update 
-    #@user = User.find(params[:id] )
+    @user = User.find(params[:id] )
 
     if @user.update_attributes(user_params)
       

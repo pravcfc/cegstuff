@@ -9,17 +9,12 @@
      <% if @posts.any? %>
      	<h2> Posts (<%= @posts.count %>)</h2>
      	<center>
-     		<table>
      			<% @posts.each do |p|  %>
-     			<tr>
-     				<td><%= link_to p.title, p %></td>
-     				<td><%= p.text %></td>
-                   <td> Posted <%= time_ago_in_words p.created_at %> ago. </td>
-     			</tr>
+                 <div class="row">
+     				<%= link_to p.title, p %><br>
+                    Posted <%= time_ago_in_words p.created_at %> ago. 
+                </div>
      			<% end %>
-                
-     		</table>
-     		
      	</center>
         <%= will_paginate @posts %>
      <% end %>

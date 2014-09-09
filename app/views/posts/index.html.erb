@@ -1,16 +1,12 @@
 <center>
-<table>
-
+<%= will_paginate %>
 <% @posts.each do |post| %>
-<tr>
+<div class="row">
 	<% user = User.find_by(id: post.user_id) %>
 	<td><%= link_to gravatar_for(user), user %></td>
 	<td><h2><%= link_to post.title, post %></h2></td>
 		<td><p><%= post.text %></p></td>
-
-</tr>
+</div>
 <% end %>
-
-</table>
 <%= will_paginate %>
 </center>

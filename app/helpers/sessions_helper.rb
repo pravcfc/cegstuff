@@ -7,9 +7,9 @@ def sign_in(user)
 	self.current_user = user
 end
 
-	def current_user=(user)
-		@current_user = user
-	end
+def current_user=(user)
+	@current_user = user
+end
 
 def current_user
   remember_token = User.digest(cookies[:remember_token] )
@@ -44,7 +44,7 @@ def redirect_back_or(default)
 end
 
 def store_location
-	session[:return_to] = request.url if request.get?
+  session[:return_to] = request.fullpath if !request.xhr?
 end
 
 end

@@ -1,7 +1,5 @@
 class CommentsController < ApplicationController
-	 #http_basic_authenticate_with name: "lampsey", password: "250", only: :destroy
 
-	 before_action :signed_in_user
 	def create
 		@post = Post.find(params[:post_id])
 

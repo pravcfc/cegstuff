@@ -6,11 +6,11 @@ Cegstuff::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root to: "posts#index"
-   get '/about' => 'home#about'
-   get '/register' => 'users#new'
-   get '/signin' => 'sessions#new'
-   get '/feed' => 'users#news_feed'
-   post '/signout', to: 'sessions#destroy'
+   get 'about' => 'home#about'
+   get 'register' => 'users#new'
+   get 'signin' => 'sessions#new'
+   get 'feed' => 'users#news_feed'
+   match 'signout', to: "sessions#destroy", via: :delete
 
    resources :users do
 
