@@ -1,25 +1,33 @@
 <br />
 <h2>Update your profile</h2>
 
-
     <%= form_for :user, :url => { :action => "update" }, :html => { :method => 'patch' } do |f| %>
 
     <%= render 'layouts/errormessages' %>
       
-      <%= f.label :name, "Username" %>
-      <%= f.text_field :name %><br /><br />
+      <div class="form-group">
+        <%= f.label :name, "Username" %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %><br /><br />
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %><br /><br />
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
 
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %><br /><br />
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation , class: 'form-control' %>
+      </div>
 
-      <%= f.submit "Save changes" %><br /><br />
+      <%= f.submit "Save changes", class: 'btn btn-warning' %>
     <% end %>
-
+    <div class="row">
     <%= gravatar_for @user %>
     <a href="http://gravatar.com/emails">change</a>
+    </div>

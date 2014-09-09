@@ -1,4 +1,5 @@
 <center>
+<% if @posts.any? %>
 <%= will_paginate %>
 <% @posts.each do |post| %>
 <div class="row">
@@ -6,7 +7,14 @@
 	<td><%= link_to gravatar_for(user), user %></td>
 	<td><h2><%= link_to post.title, post %></h2></td>
 		<td><p><%= post.text %></p></td>
+		<p> Posted <%= time_ago_in_words post.created_at %> ago. </p>
+	<% if post.user == current_user %>
+	<p><%= link_to "edit", edit_post_path(post.id) %> | <%= link_to "delete", post_path(post.id), method: 'delete' %></p>
+	<% end %>
 </div>
 <% end %>
 <%= will_paginate %>
+<% else %>
+<b class="row">No posts to display here...</b>
+<% end %>
 </center>

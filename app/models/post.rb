@@ -6,9 +6,13 @@ class Post < ActiveRecord::Base
 	validates :user_id, presence: true
 
 	def self.from_users_followed_by(user)
-    followed_user_ids = "SELECT followed_id FROM relations
-                         WHERE follower_id = :user_id"
+    followed_user_ids = "SELECT followed_id FROM relations WHERE follower_id = :user_id"
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id",
           user_id: user.id)
+  end
+
+  def self.from_users_not_followed(user)
+  	followed_user_ids = "SELECT followed_id FROM relations WHERE follower_id = :user_id"
+  	where("user_id NOT IN (#{followed_user_ids}) AND user_id = :user_id")
   end
 end

@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to CegStuff!"
+      flash[:success] = "Welcome to SAAS Forum!"
       redirect_to root_url
     else 
        render "new"
@@ -30,16 +30,18 @@ class UsersController < ApplicationController
   end
 
   def edit 
-    user = User.find(params[:id] )
+    @user = User.find(params[:id] )
   end
 
   def update 
     @user = User.find(params[:id] )
 
     if @user.update_attributes(user_params)
-      
+      flash[:alert] = "profile updated sucessfully!!"
+      redirect_to @user
     else
-      render "new"
+      flash[:alert] = "password and confirmation incorrect!!"
+      render "edit"
     end
     
   end

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@posts = Post.all.paginate(page: params[:page])
+		@posts = Post.from_users_not_followed(current_user).paginate(page: params[:page])
 	end
 
 	def create
@@ -19,6 +19,22 @@ class PostsController < ApplicationController
 				render "new"
 			end
 	end
+
+	def edit 
+    @post = User.find(params[:id] )
+  end
+
+  def update 
+    @post = User.find(params[:id] )
+
+    if @post.update_attributes(user_params)
+      flash[:notice] = "Blog updated successfully!!"
+    else
+    	flash[:notice] = "Blog failed to update!!"
+      render "new"
+    end
+    
+  end
 
 	def destroy
 
