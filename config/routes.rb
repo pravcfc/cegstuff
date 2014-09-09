@@ -5,7 +5,7 @@ Cegstuff::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root to: "posts#index"
+   root to: "users#news_feed"
    get 'about' => 'home#about'
    get 'register' => 'users#new'
    get 'signin' => 'sessions#new'

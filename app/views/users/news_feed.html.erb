@@ -4,4 +4,8 @@
 			<%= render partial: 'layouts/feed_item', collection: @feed_items %>
 	</center>
 	<%= will_paginate @feed_items %>
+	<% else %>
+		<div class="row">
+			<b>No posts to be displayed yet..</b>
+		</div>
 	<% end %>

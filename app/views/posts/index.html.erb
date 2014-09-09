@@ -10,11 +10,13 @@
 		<p> Posted <%= time_ago_in_words post.created_at %> ago. </p>
 	<% if post.user == current_user %>
 	<p><%= link_to "edit", edit_post_path(post.id) %> | <%= link_to "delete", post_path(post.id), method: 'delete' %></p>
+	<% elsif current_user.admin? %>
+		<%= link_to "delete", post_path(post.id), method: 'delete' %>
 	<% end %>
 </div>
 <% end %>
 <%= will_paginate %>
 <% else %>
-<b class="row">No posts to display here...</b>
+<b class="row">No posts to display yet...</b>
 <% end %>
 </center>

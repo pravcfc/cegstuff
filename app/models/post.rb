@@ -7,12 +7,11 @@ class Post < ActiveRecord::Base
 
 	def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relations WHERE follower_id = :user_id"
-    where("user_id IN (#{followed_user_ids}) OR user_id = :user_id",
-          user_id: user.id)
+    where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", user_id: user.id)
   end
 
   def self.from_users_not_followed(user)
-  	followed_user_ids = "SELECT followed_id FROM relations WHERE follower_id = :user_id"
-  	where("user_id NOT IN (#{followed_user_ids}) AND user_id = :user_id")
+  	unfollowed_user_ids = (User.all.map(&:id) - user.followed_users.map(&:id) - [user.id]).join(', ')
+  	where("user_id IN (#{unfollowed_user_ids})")
   end
 end

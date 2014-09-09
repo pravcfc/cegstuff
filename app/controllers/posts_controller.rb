@@ -21,14 +21,15 @@ class PostsController < ApplicationController
 	end
 
 	def edit 
-    @post = User.find(params[:id] )
+    @post = Post.find(params[:id] )
   end
 
   def update 
-    @post = User.find(params[:id] )
+    @post = Post.find(params[:id] )
 
-    if @post.update_attributes(user_params)
+    if @post.update_attributes(post_params)
       flash[:notice] = "Blog updated successfully!!"
+      redirect_to @post
     else
     	flash[:notice] = "Blog failed to update!!"
       render "new"
@@ -37,7 +38,8 @@ class PostsController < ApplicationController
   end
 
 	def destroy
-
+		Post.find(params[:id]).delete
+		redirect_to root_url, alert: 'Blog deleted!!'
 	end
 
 	def show

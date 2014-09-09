@@ -6,5 +6,7 @@
 <p> Posted <%= time_ago_in_words feed_item.created_at %> ago. </p>
 <% if feed_item.user == current_user %>
 	<p><%= link_to "edit", edit_post_path(feed_item.id) %> | <%= link_to "delete", post_path(feed_item.id), method: 'delete' %></p>
+<% elsif current_user.admin? %>
+	<%= link_to "delete", post_path(feed_item.id), method: 'delete' %>
 <% end %>
 </div>
