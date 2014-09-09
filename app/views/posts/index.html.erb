@@ -1,6 +1,6 @@
 <center>
 <% if @posts.any? %>
-<%= will_paginate %>
+<%= will_paginate, @posts %>
 <% @posts.each do |post| %>
 <div class="row">
 	<% user = User.find_by(id: post.user_id) %>
@@ -15,7 +15,7 @@
 	<% end %>
 </div>
 <% end %>
-<%= will_paginate %>
+<%= will_paginate, @posts %>
 <% else %>
 <b class="row">No posts to display yet...</b>
 <% end %>
