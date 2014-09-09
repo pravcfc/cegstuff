@@ -13,12 +13,16 @@ Cegstuff::Application.routes.draw do
    match 'signout', to: "sessions#destroy", via: :delete
 
    resources :users do
-
+     member do 
+       get :following, :followers
+     end
    end
 
   resources :posts do
     resources :comments
   end
+
+  resources :relations, only: [:create, :destroy]
 
   resources :sessions, only: [:new, :create, :destroy]
 end

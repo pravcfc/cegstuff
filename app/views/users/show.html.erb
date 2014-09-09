@@ -1,11 +1,15 @@
 <br />
 <%= gravatar_for @user %>
 <h2><%= @user.name %></h2>
+<%= render 'layouts/stats' %>
 <% flash.each do |key, value| %>
         <h4><%= value %></h4>
       <% end %>
      <br />
      <%= link_to "Edit Profile", edit_user_path %>
+     <div class="span8">
+        <%= render 'follow_form' if signed_in? %>
+     </div>
      <% if @posts.any? %>
      	<h2> Posts (<%= @posts.count %>)</h2>
      	<center>

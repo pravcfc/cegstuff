@@ -1,6 +1,4 @@
-<tr>
-<td><%= link_to gravatar_for(feed_item.user), feed_item.user %></td>
-<td><%= link_to feed_item.user.name, feed_item.user %></td>
-<td><%= feed_item.text %></td>
-<td>Posted <%= "#{time_ago_in_words(feed_item.created_at)} ago"%></td>
-</tr>
+<% user = User.find_by(id: feed_item.user_id) %>
+<td><%= link_to gravatar_for(user), user %></td>
+<td><h2><%= link_to feed_item.title, feed_item %></h2></td>
+<td><p><%= feed_item.text %></p></td>
