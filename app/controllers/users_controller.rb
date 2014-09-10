@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :signed_in_user, only: [:new, :create]
+  before_action :correct_user, only: [:edit, :update]
 
   def index
     @users = User.paginate(page: params[:page] )
@@ -69,5 +70,10 @@ private
 
   def user_params
   	params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def correct_user
+    @user = User.find(params[:id] )
+    redirect_to root_url , alert: 'Cannot perform this action!!' unless current_user?(@user)
   end
 end

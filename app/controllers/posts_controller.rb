@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	before_action :correct_user, only: [:edit, :update]
 
 	def new
 		@post = Post.new
@@ -49,5 +50,10 @@ class PostsController < ApplicationController
 	private
 	def post_params
 		params.require(:post).permit(:title, :text)
+	end
+
+	def correct_user 
+	  @post = Post.find(params[:id] )
+		redirect_to root_url , alert: 'Cannot perform this action!!' unless current_user?(@post.user)
 	end
 end
