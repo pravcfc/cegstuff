@@ -1,5 +1,5 @@
 <center>
-<% if @posts.any? %>
+<% if @posts %>
 <%= will_paginate @posts %>
 <% @posts.each do |post| %>
 <div class="row">
@@ -17,6 +17,6 @@
 <% end %>
 <%= will_paginate @posts %>
 <% else %>
-<b class="row">No posts to display yet...</b>
+	<b class="row">No posts to display yet...</b>
 <% end %>
 </center>
