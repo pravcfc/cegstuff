@@ -1,5 +1,5 @@
 <center>
-<% if @posts.count > 0 %>
+<% if @posts.any? %>
 <%= will_paginate @posts %>
 <% @posts.each do |post| %>
 <div class="row">
