@@ -12,6 +12,7 @@ class Post < ActiveRecord::Base
 
   def self.from_users_not_followed(user)
   	unfollowed_user_ids = (User.all.map(&:id) - user.followed_users.map(&:id) - [user.id]).join(', ')
-  	where("user_id IN (#{unfollowed_user_ids})", user_id: user.id) unless unfollowed_user_ids.nil?
+  	binding.pry
+  	where("user_id IN (#{unfollowed_user_ids})", user_id: user.id) unless unfollowed_user_ids.blank?
   end
 end
