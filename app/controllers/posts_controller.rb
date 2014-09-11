@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.from_users_not_followed(current_user)
-		@posts = @posts.paginate(page: params[:page]) unless @posts.nil?
+		@posts = @posts.paginate(page: params[:page]) unless @posts.nil? or @posts.empty?
 	end
 
 	def create
