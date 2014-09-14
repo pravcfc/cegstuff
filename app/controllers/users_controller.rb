@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.save and UserMailer.signup_confirmation(@user).deliver
       sign_in @user
       flash[:success] = "Welcome to SAAS Forum!"
       redirect_to root_url
