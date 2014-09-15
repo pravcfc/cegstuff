@@ -1,5 +1,5 @@
-<% if @user.followed_users.any? %>
-	<%= @user.followed_users.each do |followed_user| %>
+<% if @followed_users.any? %>
+	<%= @followed_users.each do |followed_user| %>
 		<div class="row">
 			<%= link_to "#{followed_user.name}", followed_user %>
 		</div>

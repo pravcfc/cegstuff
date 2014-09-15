@@ -36,6 +36,7 @@ group :development, :test do
   gem 'faker', '1.1.2'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'rack-mini-profiler'
   gem 'rspec-its'
   gem 'guard-rspec'
   gem 'sqlite3'
