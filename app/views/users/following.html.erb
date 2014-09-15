@@ -1,0 +1,11 @@
+<% if @user.followed_users.any? %>
+	<%= @user.followed_users.each do |followed_user| %>
+		<div class="row">
+			<%= link_to "#{followed_user.name}", followed_user %>
+		</div>
+	<% end %>
+<% else %>
+	<div class="row">
+		Not followed anyone yet...
+	</div>
+<% end %>

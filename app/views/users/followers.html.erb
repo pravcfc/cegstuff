@@ -1,0 +1,11 @@
+<% if @user.followers.any? %>
+	<%= @user.followers.each do |follower| %>
+		<div class="row">
+			<%= link_to "#{follower.name}", follower %>
+		</div>
+	<% end %>
+<% else %>
+	<div class="row">
+		Not followers yet...
+	</div>
+<% end %>
