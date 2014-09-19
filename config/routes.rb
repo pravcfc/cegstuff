@@ -20,6 +20,7 @@ Cegstuff::Application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :taggings, only: [:show]
   end
 
   resources :relations, only: [:create, :destroy]

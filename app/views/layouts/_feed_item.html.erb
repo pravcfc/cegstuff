@@ -2,7 +2,7 @@
 <% user = User.find_by(id: feed_item.user_id) %>
 <td><%= link_to gravatar_for(user), user %></td>
 <td><h2><%= link_to feed_item.title, feed_item %></h2></td>
-<td><p><%= feed_item.text %></p></td>
+<td><p><%= raw feed_item.link_tags %></p></td>
 <p> Posted <%= time_ago_in_words feed_item.created_at %> ago. </p>
 <% if feed_item.user == current_user %>
 	<p><%= link_to "edit", edit_post_path(feed_item.id) %> | <%= link_to "delete", post_path(feed_item.id), method: 'delete' %></p>

@@ -1,5 +1,5 @@
 <% if @followers.any? %>
-	<%= @followers.each do |follower| %>
+	<% @followers.each do |follower| %>
 		<div class="row">
 			<%= link_to "#{follower.name}", follower %>
 		</div>

@@ -107,6 +107,7 @@ td {
   }
 
 .navbar-bottom-customized {
+	height: 50px;
 	background-color: rgba(255, 255, 255, 1);
 }
 
@@ -114,6 +115,10 @@ td {
 		margin: 0 auto;
 		height: 10px;
 		width: 250px;
+}
+
+.container{
+	margin-bottom: 100px;
 }
 
 .form-control{

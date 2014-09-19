@@ -1,6 +1,5 @@
-<center>
-<% if !@posts.empty? %>
-<%= will_paginate @posts %>
+
+<h2>Listing posts by tag : #<%= @tag.name %></h2>
 <% @posts.each do |post| %>
 <div class="row">
 	<% user = User.find_by(id: post.user_id) %>
@@ -15,8 +14,3 @@
 	<% end %>
 </div>
 <% end %>
-<%= will_paginate @posts %>
-<% else %>
-	<b class="row">No posts to display yet...</b>
-<% end %>
-</center>
